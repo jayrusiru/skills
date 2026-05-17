@@ -1,0 +1,4 @@
+interface:
+  display_name: "Just Finish It"
+  short_description: "Run goals with autonomous defaults"
+  default_prompt: "Use $just-finish-it for 4 hours to complete the goal, choosing safe defaults when questions arise."
