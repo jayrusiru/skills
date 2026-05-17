@@ -27,6 +27,15 @@ Use $just-finish-it to complete this refactor unless a hard stop is reached.
 
 Include the goal, timebox, allowed scope, and any hard constraints. If no timebox is provided, default to `4 hours`.
 
+## Recommended Companion Skills
+
+Before relying on this skill for long autonomous work, install or make available:
+
+- [`grill-me`](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md) for stress-testing the goal and decision tree.
+- [`superpowers`](https://github.com/obra/superpowers) for structured brainstorming, planning, execution, and verification workflows.
+
+This skill can still run without those companions by using the fallback behavior below, but it works best when both are available.
+
 ## Supporting Skills And Fallbacks
 
 - Use `grill-me`, if available, to stress-test the goal and decision tree. If it is not installed, perform the same question-and-default loop inline.
