@@ -52,6 +52,29 @@ Proceed without waiting only when all are true:
 
 Do not pretend the user answered. Record it as an agent-selected default.
 
+## Non-Interactive Continuation Rule
+
+Invocation of this skill is explicit permission to continue through routine human-review gates in companion workflows. Do not stop for human input unless a Hard Stop applies.
+
+Do not pause at:
+
+- `grill-me` questions.
+- Brainstorming design approval gates.
+- Spec or plan review gates.
+- Writing-plans execution handoffs.
+- "Which approach?" prompts.
+- "Please review before proceeding" checkpoints.
+- "Plan complete" messages that would normally wait for the user.
+
+For each routine gate:
+
+1. Run the required self-review internally.
+2. Select the safest default using the Default Answer Rubric.
+3. Add a Decision Log entry.
+4. Continue immediately into the next planning, execution, or verification step.
+
+Default execution choice: use delegated/subagent execution when the platform supports it and the user explicitly requested autonomous or delegated work; otherwise execute inline. Never end the turn with a question unless a Hard Stop applies.
+
 ## Timebox
 
 Parse the requested budget: `4 hours`, `8h`, `48 hours`, or similar. If omitted, use `4 hours`.
@@ -69,9 +92,10 @@ Stop when the goal is complete, the timebox expires, or a hard stop is reached.
    - Answer it using the Default Answer Rubric.
    - Add a Decision Log entry.
    - Continue until no high-impact unknowns remain.
-4. Use the relevant process flow. When a process skill asks a routine question or requests design/plan approval, apply the same rubric and log the selected default.
+4. Use the relevant process flow. When a process skill asks a routine question or requests design/plan approval, apply the same rubric, log the selected default, and continue.
 5. Execute with subagents or delegated agents only when the platform supports them and the user explicitly requested subagents, parallel agents, or this autonomous workflow in terms that clearly imply delegated execution. Otherwise execute inline.
-6. Verify, summarize, and leave a handoff if there is remaining timeboxed work.
+6. Do not stop after planning. Continue into implementation and verification until the goal is complete, the timebox expires, or a Hard Stop is reached.
+7. Verify, summarize, and leave a handoff if there is remaining timeboxed work.
 
 ## Default Answer Rubric
 
