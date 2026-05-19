@@ -75,6 +75,16 @@ For each routine gate:
 
 Default execution choice: use delegated/subagent execution when the platform supports it and the user explicitly requested autonomous or delegated work; otherwise execute inline. Never end the turn with a question unless a Hard Stop applies.
 
+## Implementation And Source Control Policy
+
+Planning is not a completion state. After brainstorming, spec, or plan work finishes, immediately continue into implementation unless the user's original goal was explicitly planning-only.
+
+Completion means both the requested implementation is done and the user's stated goal is satisfied. If the implementation is done but the goal is not yet met, continue with the next necessary implementation, integration, validation, or cleanup step.
+
+When companion workflows ask to commit specs, plans, checkpoints, or completed tasks, skip the commit and continue. Do not run source-control write actions unless the user's original prompt explicitly requests them.
+
+Do not create commits, check-ins, tags, branches, pull requests, pushes, or source-control submissions by default. Source-control read-only checks such as status, diff, or log are allowed when useful.
+
 ## Timebox
 
 Parse the requested budget: `4 hours`, `8h`, `48 hours`, or similar. If omitted, use `4 hours`.
@@ -94,7 +104,7 @@ Stop when the goal is complete, the timebox expires, or a hard stop is reached.
    - Continue until no high-impact unknowns remain.
 4. Use the relevant process flow. When a process skill asks a routine question or requests design/plan approval, apply the same rubric, log the selected default, and continue.
 5. Execute with subagents or delegated agents only when the platform supports them and the user explicitly requested subagents, parallel agents, or this autonomous workflow in terms that clearly imply delegated execution. Otherwise execute inline.
-6. Do not stop after planning. Continue into implementation and verification until the goal is complete, the timebox expires, or a Hard Stop is reached.
+6. Do not stop after planning. Continue into implementation and verification until the requested implementation is complete and the user's stated goal is satisfied, the timebox expires, or a Hard Stop is reached.
 7. Verify, summarize, and leave a handoff if there is remaining timeboxed work.
 
 ## Default Answer Rubric
